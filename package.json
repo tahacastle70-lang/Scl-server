@@ -1,0 +1,14 @@
+{
+  "name": "scl-central-backend",
+  "version": "1.0.0",
+  "description": "Central Backend Server for SCL Streamers v5.0.0 - License, Proxies, AI Pool & Live Monitoring",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  }
+}

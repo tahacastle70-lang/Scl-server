@@ -1,0 +1,79 @@
+{
+  "clients": [
+    {
+      "id": "c-1786326270542",
+      "name": "ishakick",
+      "email": "ishakick@gmail.com",
+      "lk": "SCL-6FT1-OR30-MFZN",
+      "exp": "2026-09-10",
+      "kc": "ishakick",
+      "sc": "ishakick",
+      "ce": true,
+      "ve": true,
+      "se": true,
+      "paused": false,
+      "stopped": false,
+      "created": "2026-08-10T01:44:30.542Z",
+      "watchChannels": [
+        "ishakick"
+      ]
+    },
+    {
+      "id": "c-1786393132333",
+      "name": "s7aytta",
+      "email": "s7aytta",
+      "lk": "SCL-9OCC-VOHF-NDZP",
+      "exp": "2026-09-10",
+      "kc": "s7aytta",
+      "sc": "s7aytta",
+      "ce": true,
+      "ve": true,
+      "se": true,
+      "paused": false,
+      "stopped": false,
+      "created": "2026-08-10T20:18:52.333Z",
+      "watchChannels": [
+        "s7aytta"
+      ]
+    },
+    {
+      "id": "c-1785951088522",
+      "name": "Karim",
+      "email": "ahmedkarim@gmail.com",
+      "lk": "SCL-B9LL-1KV5-RS4K",
+      "exp": "2026-09-01",
+      "kc": "lhowari_01",
+      "sc": "https://kick.com/lhowari_01",
+      "ce": true,
+      "ve": true,
+      "se": true,
+      "paused": false,
+      "stopped": false,
+      "created": "2026-08-05T17:31:28.522Z",
+      "watchChannels": []
+    },
+    {
+      "id": "c-1786155631012",
+      "name": "baby-girl-48",
+      "email": "baby-girl-48@gmail.com",
+      "lk": "SCL-DYXQ-FA6E-Y64M",
+      "exp": "2026-09-01",
+      "kc": "baby-girl-48",
+      "sc": "baby-girl-48",
+      "ce": false,
+      "ve": true,
+      "se": true,
+      "paused": true,
+      "stopped": false,
+      "created": "2026-08-08T02:20:31.012Z",
+      "watchChannels": [
+        "baby-girl-48"
+      ]
+    }
+  ],
+  "proxies": [],
+  "aiConfigs": {},
+  "customMessages": {},
+  "raidState": null,
+  "liveCache": {}
+}
