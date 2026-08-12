@@ -43,14 +43,16 @@
       "lk": "SCL-B9LL-1KV5-RS4K",
       "exp": "2026-09-01",
       "kc": "lhowari_01",
-      "sc": "https://kick.com/lhowari_01",
+      "sc": "lhowari_01",
       "ce": true,
       "ve": true,
       "se": true,
       "paused": false,
       "stopped": false,
       "created": "2026-08-05T17:31:28.522Z",
-      "watchChannels": []
+      "watchChannels": [
+        "lhowari_01"
+      ]
     },
     {
       "id": "c-1786155631012",
@@ -68,6 +70,24 @@
       "created": "2026-08-08T02:20:31.012Z",
       "watchChannels": [
         "baby-girl-48"
+      ]
+    },
+    {
+      "id": "c-1786506000000",
+      "name": "crypto7z",
+      "email": "crypto7z",
+      "lk": "SCL-OD1V-KC7G-4XAR",
+      "exp": "2026-10-12",
+      "kc": "crypto7z",
+      "sc": "crypto7z",
+      "ce": true,
+      "ve": true,
+      "se": true,
+      "paused": false,
+      "stopped": false,
+      "created": "2026-08-12T04:00:00.000Z",
+      "watchChannels": [
+        "crypto7z"
       ]
     }
   ],

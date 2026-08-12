@@ -19,15 +19,74 @@ const defaultDb = {
   ],
   clients: [
     {
-      id: '1',
-      name: 'Default Streamer',
-      customerName: 'Default Streamer',
-      licenseKey: 'SCL-ADMIN-1234',
-      kickChannel: 'kick_streamer',
-      watchChannels: ['kick_streamer'],
-      isAdmin: true,
-      active: true,
-      expiresAt: '2030-12-31'
+      id: 'c-1786326270542',
+      name: 'ishakick',
+      customerName: 'ishakick',
+      email: 'ishakick@gmail.com',
+      lk: 'SCL-6FT1-OR30-MFZN',
+      licenseKey: 'SCL-6FT1-OR30-MFZN',
+      exp: '2026-09-10',
+      kc: 'ishakick',
+      kickChannel: 'ishakick',
+      ce: true, ve: true, se: true, paused: false, stopped: false,
+      created: '2026-08-10T01:44:30.542Z',
+      watchChannels: ['ishakick']
+    },
+    {
+      id: 'c-1786393132333',
+      name: 's7aytta',
+      customerName: 's7aytta',
+      email: 's7aytta',
+      lk: 'SCL-9OCC-VOHF-NDZP',
+      licenseKey: 'SCL-9OCC-VOHF-NDZP',
+      exp: '2026-09-10',
+      kc: 's7aytta',
+      kickChannel: 's7aytta',
+      ce: true, ve: true, se: true, paused: false, stopped: false,
+      created: '2026-08-10T20:18:52.333Z',
+      watchChannels: ['s7aytta']
+    },
+    {
+      id: 'c-1785951088522',
+      name: 'Karim',
+      customerName: 'Karim',
+      email: 'ahmedkarim@gmail.com',
+      lk: 'SCL-B9LL-1KV5-RS4K',
+      licenseKey: 'SCL-B9LL-1KV5-RS4K',
+      exp: '2026-09-01',
+      kc: 'lhowari_01',
+      kickChannel: 'lhowari_01',
+      ce: true, ve: true, se: true, paused: false, stopped: false,
+      created: '2026-08-05T17:31:28.522Z',
+      watchChannels: ['lhowari_01']
+    },
+    {
+      id: 'c-1786155631012',
+      name: 'baby-girl-48',
+      customerName: 'baby-girl-48',
+      email: 'baby-girl-48@gmail.com',
+      lk: 'SCL-DYXQ-FA6E-Y64M',
+      licenseKey: 'SCL-DYXQ-FA6E-Y64M',
+      exp: '2026-09-01',
+      kc: 'baby-girl-48',
+      kickChannel: 'baby-girl-48',
+      ce: false, ve: true, se: true, paused: true, stopped: false,
+      created: '2026-08-08T02:20:31.012Z',
+      watchChannels: ['baby-girl-48']
+    },
+    {
+      id: 'c-1786506000000',
+      name: 'crypto7z',
+      customerName: 'crypto7z',
+      email: 'crypto7z',
+      lk: 'SCL-OD1V-KC7G-4XAR',
+      licenseKey: 'SCL-OD1V-KC7G-4XAR',
+      exp: '2026-10-12',
+      kc: 'crypto7z',
+      kickChannel: 'crypto7z',
+      ce: true, ve: true, se: true, paused: false, stopped: false,
+      created: '2026-08-12T04:00:00.000Z',
+      watchChannels: ['crypto7z']
     }
   ],
   proxies: [],
@@ -43,20 +102,18 @@ function loadDb() {
       const saved = JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
       const merged = Object.assign({}, defaultDb, saved);
       if (!Array.isArray(merged.clients) || merged.clients.length === 0) {
-        merged.clients = [];
+        merged.clients = defaultDb.clients;
       }
       if (!Array.isArray(merged.admins) || merged.admins.length === 0) {
         merged.admins = defaultDb.admins;
       }
-      // ⚠️  DO NOT REMOVE THIS — empêche Default Streamer (id:'1') de se mélanger
-      // avec les vrais clients du admin panel. Sans ça, il réapparaît à chaque restart.
       merged.clients = merged.clients.filter(c => c.id !== '1');
       return merged;
     }
   } catch (e) {
     console.error('[DB] Read error:', e.message);
   }
-  return { ...defaultDb, clients: [] };
+  return { ...defaultDb };
 }
 
 function saveDb(data) {
@@ -95,11 +152,11 @@ function checkKickLive(slug) {
           saveDb(db);
           resolve(isLive);
         } catch (e) {
-          resolve(true);
+          resolve(false);
         }
       });
     });
-    req.on('error', () => resolve(true));
+    req.on('error', () => resolve(false));
   });
 }
 
