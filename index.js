@@ -497,6 +497,92 @@ const server = http.createServer(async (req, res) => {
     return sendJson(res, 200, { success: true, proxies: db.proxies });
   }
 
+  // ── Smart Proxy Rotation ─────────────────────────────────────────
+  // GET /api/proxies/rotation-status → returns current rotation info
+  if (method === 'GET' && pathname === '/api/proxies/rotation-status') {
+    const allProxies = db.proxies.filter(p => p.active !== false);
+    const activeStreamers = db.clients.filter(c => !c.paused && !c.stopped);
+    const streamerCount = Math.max(activeStreamers.length, 1);
+    const totalProxies = allProxies.length;
+    const batchSize = Math.floor(totalProxies / streamerCount) || totalProxies;
+    const rotation = db.proxyRotation || { currentBatch: 0, lastRotated: null, autoRotateHours: 48 };
+    const totalBatches = batchSize > 0 ? Math.ceil(totalProxies / batchSize) : 1;
+    const nextRotation = rotation.lastRotated
+      ? new Date(new Date(rotation.lastRotated).getTime() + (rotation.autoRotateHours || 48) * 3600000).toISOString()
+      : null;
+
+    return sendJson(res, 200, {
+      success: true,
+      totalProxies,
+      streamerCount,
+      batchSize,
+      currentBatch: rotation.currentBatch || 0,
+      totalBatches,
+      lastRotated: rotation.lastRotated,
+      nextRotation,
+      autoRotateHours: rotation.autoRotateHours || 48
+    });
+  }
+
+  // POST /api/proxies/rotate → rotate to next batch
+  if (method === 'POST' && pathname === '/api/proxies/rotate') {
+    const body = await parseBody(req);
+    const autoRotateHours = body.autoRotateHours || 48;
+
+    const allProxies = db.proxies.filter(p => p.active !== false);
+    const activeStreamers = db.clients.filter(c => !c.paused && !c.stopped);
+    const streamerCount = Math.max(activeStreamers.length, 1);
+    const totalProxies = allProxies.length;
+
+    if (totalProxies === 0) {
+      return sendJson(res, 400, { success: false, message: 'No proxies in pool' });
+    }
+
+    // Auto-calculate batch size: total proxies ÷ number of active streamers
+    const batchSize = Math.floor(totalProxies / streamerCount) || totalProxies;
+    const totalBatches = Math.ceil(totalProxies / batchSize);
+
+    const prevBatch = (db.proxyRotation && db.proxyRotation.currentBatch) || 0;
+    const nextBatch = (prevBatch + 1) % totalBatches;
+
+    // Save rotation state
+    db.proxyRotation = {
+      currentBatch: nextBatch,
+      batchSize,
+      totalBatches,
+      lastRotated: new Date().toISOString(),
+      autoRotateHours
+    };
+    saveDb(db);
+
+    // Return proxies for current batch
+    const start = nextBatch * batchSize;
+    const batchProxies = allProxies.slice(start, start + batchSize);
+
+    console.log(`[ProxyRotation] Rotated to Batch ${nextBatch + 1}/${totalBatches} — ${batchProxies.length} proxies active (${batchSize}/streamer × ${streamerCount} streamers)`);
+
+    return sendJson(res, 200, {
+      success: true,
+      currentBatch: nextBatch,
+      totalBatches,
+      batchSize,
+      streamerCount,
+      proxiesActive: batchProxies.length,
+      proxies: batchProxies,
+      lastRotated: db.proxyRotation.lastRotated,
+      nextRotation: new Date(Date.now() + autoRotateHours * 3600000).toISOString()
+    });
+  }
+
+  // POST /api/proxies/rotation-settings → update auto rotate hours
+  if (method === 'POST' && pathname === '/api/proxies/rotation-settings') {
+    const body = await parseBody(req);
+    db.proxyRotation = db.proxyRotation || {};
+    if (body.autoRotateHours) db.proxyRotation.autoRotateHours = parseInt(body.autoRotateHours, 10);
+    saveDb(db);
+    return sendJson(res, 200, { success: true, settings: db.proxyRotation });
+  }
+
   // Live Status Check
   if (method === 'GET' && pathname === '/api/live-status') {
     const slug = parsedUrl.query.slug;
