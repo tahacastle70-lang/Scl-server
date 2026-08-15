@@ -1,4 +1,18 @@
 {
+  "admins": [
+    {
+      "username": "admin",
+      "password": "admin2025",
+      "role": "SUPER_ADMIN",
+      "name": "Super Admin (Owner)"
+    },
+    {
+      "username": "staff1",
+      "password": "staff2025",
+      "role": "SUB_ADMIN",
+      "name": "Staff Member"
+    }
+  ],
   "clients": [
     {
       "id": "c-1786326270542",
@@ -17,81 +31,127 @@
       "watchChannels": [
         "ishakick"
       ]
-    },
-    {
-      "id": "c-1786393132333",
-      "name": "s7aytta",
-      "email": "s7aytta",
-      "lk": "SCL-9OCC-VOHF-NDZP",
-      "exp": "2026-09-10",
-      "kc": "s7aytta",
-      "sc": "s7aytta",
-      "ce": true,
-      "ve": true,
-      "se": true,
-      "paused": false,
-      "stopped": false,
-      "created": "2026-08-10T20:18:52.333Z",
-      "watchChannels": [
-        "s7aytta"
-      ]
-    },
-    {
-      "id": "c-1785951088522",
-      "name": "Karim",
-      "email": "ahmedkarim@gmail.com",
-      "lk": "SCL-B9LL-1KV5-RS4K",
-      "exp": "2026-09-01",
-      "kc": "lhowari_01",
-      "sc": "lhowari_01",
-      "ce": true,
-      "ve": true,
-      "se": true,
-      "paused": false,
-      "stopped": false,
-      "created": "2026-08-05T17:31:28.522Z",
-      "watchChannels": [
-        "lhowari_01"
-      ]
-    },
-    {
-      "id": "c-1786155631012",
-      "name": "baby-girl-48",
-      "email": "baby-girl-48@gmail.com",
-      "lk": "SCL-DYXQ-FA6E-Y64M",
-      "exp": "2026-09-01",
-      "kc": "baby-girl-48",
-      "sc": "baby-girl-48",
-      "ce": false,
-      "ve": true,
-      "se": true,
-      "paused": true,
-      "stopped": false,
-      "created": "2026-08-08T02:20:31.012Z",
-      "watchChannels": [
-        "baby-girl-48"
-      ]
-    },
-    {
-      "id": "c-1786506000000",
-      "name": "crypto7z",
-      "email": "crypto7z",
-      "lk": "SCL-OD1V-KC7G-4XAR",
-      "exp": "2026-10-12",
-      "kc": "crypto7z",
-      "sc": "crypto7z",
-      "ce": true,
-      "ve": true,
-      "se": true,
-      "paused": false,
-      "stopped": false,
-      "created": "2026-08-12T04:00:00.000Z",
-      "watchChannels": [
-        "crypto7z"
-      ]
     }
   ],
-  "proxies": [],
+  "proxies": [
+    {
+      "id": "px_1786801091996_pdaj6w",
+      "host": "31.56.127.193",
+      "port": 7684,
+      "username": "ocdexwof",
+      "password": "vyvbayxf7b4e",
+      "type": "http",
+      "maxTabs": 15,
+      "active": false,
+      "status": "dead",
+      "pingMs": 244,
+      "addedAt": "2026-08-15T13:38:11.996Z"
+    },
+    {
+      "id": "px_1786801091996_vtatx9",
+      "host": "198.105.121.200",
+      "port": 6462,
+      "username": "ocdexwof",
+      "password": "vyvbayxf7b4e",
+      "type": "http",
+      "maxTabs": 15,
+      "active": false,
+      "status": "dead",
+      "pingMs": 462,
+      "addedAt": "2026-08-15T13:38:11.996Z"
+    },
+    {
+      "id": "px_1786801091996_fjubz8",
+      "host": "64.137.96.74",
+      "port": 6641,
+      "username": "ocdexwof",
+      "password": "vyvbayxf7b4e",
+      "type": "http",
+      "maxTabs": 15,
+      "active": false,
+      "status": "dead",
+      "pingMs": 471,
+      "addedAt": "2026-08-15T13:38:11.996Z"
+    },
+    {
+      "id": "px_1786801091996_crawva",
+      "host": "198.23.243.226",
+      "port": 6361,
+      "username": "ocdexwof",
+      "password": "vyvbayxf7b4e",
+      "type": "http",
+      "maxTabs": 15,
+      "active": false,
+      "status": "dead",
+      "pingMs": 753,
+      "addedAt": "2026-08-15T13:38:11.996Z"
+    },
+    {
+      "id": "px_1786801091996_t76p15",
+      "host": "38.154.185.97",
+      "port": 6370,
+      "username": "ocdexwof",
+      "password": "vyvbayxf7b4e",
+      "type": "http",
+      "maxTabs": 15,
+      "active": false,
+      "status": "dead",
+      "pingMs": 241,
+      "addedAt": "2026-08-15T13:38:11.996Z"
+    },
+    {
+      "id": "px_1786801091996_rrdpxa",
+      "host": "84.247.60.125",
+      "port": 6095,
+      "username": "ocdexwof",
+      "password": "vyvbayxf7b4e",
+      "type": "http",
+      "maxTabs": 15,
+      "active": false,
+      "status": "dead",
+      "pingMs": 500,
+      "addedAt": "2026-08-15T13:38:11.996Z"
+    },
+    {
+      "id": "px_1786801091996_78r4pp",
+      "host": "142.111.67.146",
+      "port": 5611,
+      "username": "ocdexwof",
+      "password": "vyvbayxf7b4e",
+      "type": "http",
+      "maxTabs": 15,
+      "active": false,
+      "status": "dead",
+      "pingMs": 1286,
+      "addedAt": "2026-08-15T13:38:11.996Z"
+    },
+    {
+      "id": "px_1786801091996_y1u1qx",
+      "host": "191.96.254.138",
+      "port": 6185,
+      "username": "ocdexwof",
+      "password": "vyvbayxf7b4e",
+      "type": "http",
+      "maxTabs": 15,
+      "active": false,
+      "status": "dead",
+      "pingMs": 777,
+      "addedAt": "2026-08-15T13:38:11.996Z"
+    },
+    {
+      "id": "px_1786801091996_5eyr5w",
+      "host": "45.38.107.97",
+      "port": 6014,
+      "username": "ocdexwof",
+      "password": "vyvbayxf7b4e",
+      "type": "http",
+      "maxTabs": 15,
+      "active": false,
+      "status": "dead",
+      "pingMs": 450,
+      "addedAt": "2026-08-15T13:38:11.996Z"
+    }
+  ],
   "aiConfigs": {},
   "customMessages": {},
   "raidState": null,

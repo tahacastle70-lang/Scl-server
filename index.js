@@ -31,76 +31,9 @@ const defaultDb = {
       ce: true, ve: true, se: true, paused: false, stopped: false,
       created: '2026-08-10T01:44:30.542Z',
       watchChannels: ['ishakick']
-    },
-    {
-      id: 'c-1786393132333',
-      name: 's7aytta',
-      customerName: 's7aytta',
-      email: 's7aytta',
-      lk: 'SCL-9OCC-VOHF-NDZP',
-      licenseKey: 'SCL-9OCC-VOHF-NDZP',
-      exp: '2026-09-10',
-      kc: 's7aytta',
-      kickChannel: 's7aytta',
-      ce: true, ve: true, se: true, paused: false, stopped: false,
-      created: '2026-08-10T20:18:52.333Z',
-      watchChannels: ['s7aytta']
-    },
-    {
-      id: 'c-1785951088522',
-      name: 'Karim',
-      customerName: 'Karim',
-      email: 'ahmedkarim@gmail.com',
-      lk: 'SCL-B9LL-1KV5-RS4K',
-      licenseKey: 'SCL-B9LL-1KV5-RS4K',
-      exp: '2026-09-01',
-      kc: 'lhowari_01',
-      kickChannel: 'lhowari_01',
-      ce: true, ve: true, se: true, paused: false, stopped: false,
-      created: '2026-08-05T17:31:28.522Z',
-      watchChannels: ['lhowari_01']
-    },
-    {
-      id: 'c-1786155631012',
-      name: 'baby-girl-48',
-      customerName: 'baby-girl-48',
-      email: 'baby-girl-48@gmail.com',
-      lk: 'SCL-DYXQ-FA6E-Y64M',
-      licenseKey: 'SCL-DYXQ-FA6E-Y64M',
-      exp: '2026-09-01',
-      kc: 'baby-girl-48',
-      kickChannel: 'baby-girl-48',
-      ce: false, ve: true, se: true, paused: true, stopped: false,
-      created: '2026-08-08T02:20:31.012Z',
-      watchChannels: ['baby-girl-48']
-    },
-    {
-      id: 'c-1786506000000',
-      name: 'crypto7z',
-      customerName: 'crypto7z',
-      email: 'crypto7z',
-      lk: 'SCL-OD1V-KC7G-4XAR',
-      licenseKey: 'SCL-OD1V-KC7G-4XAR',
-      exp: '2026-10-12',
-      kc: 'crypto7z',
-      kickChannel: 'crypto7z',
-      ce: true, ve: true, se: true, paused: false, stopped: false,
-      created: '2026-08-12T04:00:00.000Z',
-      watchChannels: ['crypto7z']
     }
   ],
-  proxies: [
-    { id: 'px_deco_01', host: 'dc.decodo.com', port: 10001, username: 'spvkuk4uhl', password: 'omX~u8O4emue5ncF4A', type: 'http', maxTabs: 10, active: true, addedAt: '2026-08-15T00:00:00.000Z' },
-    { id: 'px_deco_02', host: 'dc.decodo.com', port: 10002, username: 'spvkuk4uhl', password: 'omX~u8O4emue5ncF4A', type: 'http', maxTabs: 10, active: true, addedAt: '2026-08-15T00:00:00.000Z' },
-    { id: 'px_deco_03', host: 'dc.decodo.com', port: 10003, username: 'spvkuk4uhl', password: 'omX~u8O4emue5ncF4A', type: 'http', maxTabs: 10, active: true, addedAt: '2026-08-15T00:00:00.000Z' },
-    { id: 'px_deco_04', host: 'dc.decodo.com', port: 10004, username: 'spvkuk4uhl', password: 'omX~u8O4emue5ncF4A', type: 'http', maxTabs: 10, active: true, addedAt: '2026-08-15T00:00:00.000Z' },
-    { id: 'px_deco_05', host: 'dc.decodo.com', port: 10005, username: 'spvkuk4uhl', password: 'omX~u8O4emue5ncF4A', type: 'http', maxTabs: 10, active: true, addedAt: '2026-08-15T00:00:00.000Z' },
-    { id: 'px_deco_06', host: 'dc.decodo.com', port: 10006, username: 'spvkuk4uhl', password: 'omX~u8O4emue5ncF4A', type: 'http', maxTabs: 10, active: true, addedAt: '2026-08-15T00:00:00.000Z' },
-    { id: 'px_deco_07', host: 'dc.decodo.com', port: 10007, username: 'spvkuk4uhl', password: 'omX~u8O4emue5ncF4A', type: 'http', maxTabs: 10, active: true, addedAt: '2026-08-15T00:00:00.000Z' },
-    { id: 'px_deco_08', host: 'dc.decodo.com', port: 10008, username: 'spvkuk4uhl', password: 'omX~u8O4emue5ncF4A', type: 'http', maxTabs: 10, active: true, addedAt: '2026-08-15T00:00:00.000Z' },
-    { id: 'px_deco_09', host: 'dc.decodo.com', port: 10009, username: 'spvkuk4uhl', password: 'omX~u8O4emue5ncF4A', type: 'http', maxTabs: 10, active: true, addedAt: '2026-08-15T00:00:00.000Z' },
-    { id: 'px_deco_10', host: 'dc.decodo.com', port: 10010, username: 'spvkuk4uhl', password: 'omX~u8O4emue5ncF4A', type: 'http', maxTabs: 10, active: true, addedAt: '2026-08-15T00:00:00.000Z' }
-  ],
+  proxies: [],
   aiConfigs: {},
   customMessages: {},
   raidState: null,
@@ -363,16 +296,9 @@ const server = http.createServer(async (req, res) => {
   if (method === 'POST' && (pathname === '/api/clients/sync' || pathname === '/api/clients')) {
     const body = await parseBody(req);
     if (Array.isArray(body.clients)) {
-      // ⚠️  DO NOT CHANGE TO: db.clients = body.clients
-      // Merge par ID — on garde les clients enregistrés via validate-key côté serveur
-      // qui ne sont pas encore dans le admin panel localStorage.
-      // Si on fait un remplacement direct, on perd des clients à chaque sync.
-      const incomingMap = {};
-      body.clients.forEach(c => { incomingMap[c.id] = c; });
-      const serverOnly = db.clients.filter(c => !incomingMap[c.id] && c.id !== '1');
-      db.clients = body.clients.concat(serverOnly);
+      db.clients = body.clients;
       saveDb(db);
-      console.log('[Server] Synced clients count:', db.clients.length, '(+', serverOnly.length, 'server-only preserved)');
+      console.log('[Server] Synced clients count:', db.clients.length);
       return sendJson(res, 200, { success: true, count: db.clients.length, clients: db.clients });
     }
   }
@@ -506,131 +432,179 @@ const server = http.createServer(async (req, res) => {
     return sendJson(res, 200, { success: true, added: added.length, total: db.proxies.length, proxies: db.proxies });
   }
 
+  // Sync Proxies (Full Overwrite / Replace)
+  if (method === 'POST' && pathname === '/api/proxies/sync') {
+    const body = await parseBody(req);
+    if (body && Array.isArray(body.proxies)) {
+      db.proxies = body.proxies;
+      saveDb(db);
+      return sendJson(res, 200, { success: true, count: db.proxies.length, proxies: db.proxies });
+    }
+    return sendJson(res, 400, { success: false, message: 'Invalid proxies array' });
+  }
+
+  // Clear All Proxies
+  if (method === 'POST' && pathname === '/api/proxies/clear-all') {
+    db.proxies = [];
+    saveDb(db);
+    return sendJson(res, 200, { success: true, count: 0, proxies: [] });
+  }
+
   // Delete Proxy
   if (method === 'POST' && pathname === '/api/proxies/delete') {
     const body = await parseBody(req);
     db.proxies = db.proxies.filter(p => p.id !== body.id);
     saveDb(db);
-    return sendJson(res, 200, { success: true, proxies: db.proxies });
+    return sendJson(res, 200, { success: true, count: db.proxies.length, proxies: db.proxies });
   }
 
-  // ── Test Proxy / Test All Proxies ────────────────────────────────
-  // POST /api/proxies/test → test one proxy { id } or all { testAll: true }
+  // Clean Dead Proxies Endpoint (Purge Inactive / Dead Proxies)
+  if (method === 'POST' && pathname === '/api/proxies/clean-dead') {
+    const prevCount = db.proxies.length;
+    db.proxies = db.proxies.filter(p => p.active !== false && p.status !== 'dead');
+    saveDb(db);
+    const removed = prevCount - db.proxies.length;
+    console.log(`[Proxies] Cleaned ${removed} dead proxies. Remaining: ${db.proxies.length}`);
+    return sendJson(res, 200, { success: true, removed, count: db.proxies.length, proxies: db.proxies });
+  }
+
+  // ── Test Proxy / Test All Proxies / Test Batch ────────────────────
+  // POST /api/proxies/test → test one { id }, specific { ids: [] }, on-the-fly { proxies: [] }, or all { testAll: true }
   if (method === 'POST' && pathname === '/api/proxies/test') {
     const body = await parseBody(req);
 
     /**
      * testOneProxy(proxy) → Promise<{ online, ms, ip, error }>
-     * Connects via HTTP CONNECT tunnel to the proxy, then does a GET
-     * to http://httpbin.org/ip (plain HTTP — many free proxies block HTTPS).
-     * Falls back to https://api.ipify.org if the first target fails.
+     * Fast non-blocking connectivity check with 6s timeout
      */
     function testOneProxy(proxy) {
       return new Promise((resolve) => {
         const start = Date.now();
-        const TIMEOUT_MS = 12000;
+        const TIMEOUT_MS = 6000;
         const proxyHost = proxy.host;
         const proxyPort = parseInt(proxy.port, 10);
         const targetHost = 'httpbin.org';
         const targetPort = 80;
         const targetPath = '/ip';
 
-        const reqOptions = {
-          host: proxyHost,
-          port: proxyPort,
-          method: 'CONNECT',
-          path: `${targetHost}:${targetPort}`,
-          timeout: TIMEOUT_MS
-        };
-
-        if (proxy.username && proxy.password) {
-          const creds = Buffer.from(`${proxy.username}:${proxy.password}`).toString('base64');
-          reqOptions.headers = { 'Proxy-Authorization': `Basic ${creds}` };
-        }
-
         let done = false;
         const finish = (result) => {
           if (!done) { done = true; resolve(result); }
         };
 
-        // For HTTP proxies: send a plain GET request directly to the proxy
-        function tryDirectGet() {
-          const netReq = http.request({
-            host: proxyHost,
-            port: proxyPort,
-            method: 'GET',
-            path: `http://${targetHost}${targetPath}`,
-            headers: {
-              'Host': targetHost,
-              ...(proxy.username && proxy.password ? {
-                'Proxy-Authorization': `Basic ${Buffer.from(`${proxy.username}:${proxy.password}`).toString('base64')}`
-              } : {})
-            },
-            timeout: TIMEOUT_MS
-          }, (pRes) => {
-            let data = '';
-            pRes.on('data', d => { data += d; });
-            pRes.on('end', () => {
-              const ms = Date.now() - start;
-              try {
-                const parsed = JSON.parse(data);
-                finish({ online: true, ms, ip: parsed.origin || parsed.ip || '?' });
-              } catch (e) {
-                finish({ online: true, ms, ip: data.trim().slice(0, 30) || '?' });
-              }
-            });
-          });
-          netReq.on('error', (err) => finish({ online: false, ms: Date.now() - start, error: err.message }));
-          netReq.on('timeout', () => { netReq.destroy(); finish({ online: false, ms: TIMEOUT_MS, error: 'Timeout' }); });
-          netReq.end();
-        }
-
         if (proxy.type === 'socks5') {
-          // SOCKS5 testing via direct connect trick — just try TCP port open
           const net = require('net');
           const sock = net.createConnection({ host: proxyHost, port: proxyPort, timeout: TIMEOUT_MS });
-          sock.on('connect', () => { const ms = Date.now() - start; sock.destroy(); finish({ online: true, ms, ip: proxyHost }); });
-          sock.on('error', (err) => finish({ online: false, ms: Date.now() - start, error: err.message }));
-          sock.on('timeout', () => { sock.destroy(); finish({ online: false, ms: TIMEOUT_MS, error: 'Timeout' }); });
-        } else {
-          tryDirectGet();
+          sock.on('connect', () => {
+            const ms = Date.now() - start;
+            sock.destroy();
+            finish({ online: true, ms, ip: proxyHost });
+          });
+          sock.on('error', (err) => finish({ online: false, ms: Date.now() - start, error: err.message || 'Connection failed' }));
+          sock.on('timeout', () => { sock.destroy(); finish({ online: false, ms: TIMEOUT_MS, error: 'Timeout (6s)' }); });
+          return;
         }
+
+        // For HTTP proxies: send a plain GET request directly to the proxy
+        const reqOptions = {
+          host: proxyHost,
+          port: proxyPort,
+          method: 'GET',
+          path: `http://${targetHost}${targetPath}`,
+          headers: {
+            'Host': targetHost,
+            'User-Agent': 'SCLBot/5.0'
+          },
+          timeout: TIMEOUT_MS
+        };
+
+        if (proxy.username && proxy.password) {
+          const creds = Buffer.from(`${proxy.username}:${proxy.password}`).toString('base64');
+          reqOptions.headers['Proxy-Authorization'] = `Basic ${creds}`;
+        }
+
+        const netReq = http.request(reqOptions, (pRes) => {
+          let data = '';
+          pRes.on('data', d => { data += d; });
+          pRes.on('end', () => {
+            const ms = Date.now() - start;
+            if (pRes.statusCode >= 200 && pRes.statusCode < 400) {
+              try {
+                const parsed = JSON.parse(data);
+                finish({ online: true, ms, ip: parsed.origin || parsed.ip || proxyHost });
+              } catch (e) {
+                finish({ online: true, ms, ip: proxyHost });
+              }
+            } else {
+              finish({ online: false, ms, error: `HTTP ${pRes.statusCode}` });
+            }
+          });
+        });
+
+        netReq.on('error', (err) => finish({ online: false, ms: Date.now() - start, error: err.message || 'Connection failed' }));
+        netReq.on('timeout', () => { netReq.destroy(); finish({ online: false, ms: TIMEOUT_MS, error: 'Timeout (6s)' }); });
+        netReq.end();
       });
     }
 
-    if (body.testAll) {
-      // Test all proxies in parallel (max 10 concurrently)
-      const proxiesToTest = db.proxies;
-      if (!proxiesToTest.length) {
-        return sendJson(res, 200, { success: true, results: [] });
-      }
-
+    async function runBatchTests(list) {
       const results = [];
-      const BATCH = 10;
-      for (let i = 0; i < proxiesToTest.length; i += BATCH) {
-        const batch = proxiesToTest.slice(i, i + BATCH);
+      const BATCH = 15;
+      for (let i = 0; i < list.length; i += BATCH) {
+        const batch = list.slice(i, i + BATCH);
         const batchResults = await Promise.all(batch.map(async (p) => {
           const r = await testOneProxy(p);
-          // Update proxy active status in DB based on test result
           const idx = db.proxies.findIndex(x => x.id === p.id);
-          if (idx !== -1) db.proxies[idx].active = r.online;
+          if (idx !== -1) {
+            db.proxies[idx].active = r.online;
+            db.proxies[idx].status = r.online ? 'online' : 'dead';
+            db.proxies[idx].pingMs = r.ms;
+            db.proxies[idx].lastTested = new Date().toISOString();
+          }
           return { id: p.id, host: p.host, port: p.port, ...r };
         }));
         results.push(...batchResults);
       }
       saveDb(db);
+      return results;
+    }
+
+    // 1. Direct on-the-fly proxies test
+    if (Array.isArray(body.proxies) && body.proxies.length > 0) {
+      const results = await runBatchTests(body.proxies);
       return sendJson(res, 200, { success: true, results });
-    } else {
-      // Test a single proxy by id
+    }
+
+    // 2. Specific IDs test
+    if (Array.isArray(body.ids) && body.ids.length > 0) {
+      const proxiesToTest = db.proxies.filter(p => body.ids.includes(p.id));
+      const results = await runBatchTests(proxiesToTest);
+      return sendJson(res, 200, { success: true, results });
+    }
+
+    // 3. Test All proxies
+    if (body.testAll) {
+      const results = await runBatchTests(db.proxies);
+      return sendJson(res, 200, { success: true, results });
+    }
+
+    // 4. Single proxy by ID
+    if (body.id) {
       const proxy = db.proxies.find(p => p.id === body.id);
       if (!proxy) return sendJson(res, 404, { success: false, message: 'Proxy not found' });
       const result = await testOneProxy(proxy);
-      // Update proxy active status
       const idx = db.proxies.findIndex(p => p.id === body.id);
-      if (idx !== -1) db.proxies[idx].active = result.online;
-      saveDb(db);
+      if (idx !== -1) {
+        db.proxies[idx].active = result.online;
+        db.proxies[idx].status = result.online ? 'online' : 'dead';
+        db.proxies[idx].pingMs = result.ms;
+        db.proxies[idx].lastTested = new Date().toISOString();
+        saveDb(db);
+      }
       return sendJson(res, 200, { success: true, id: body.id, ...result });
     }
+
+    return sendJson(res, 400, { success: false, message: 'No proxy ID or batch specified for test' });
   }
 
   // ── Smart Proxy Rotation ─────────────────────────────────────────
