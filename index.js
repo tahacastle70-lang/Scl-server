@@ -32,10 +32,12 @@ const defaultDb = {
 // the SAME instance but reset on cold start (new deploy/idle timeout).
 // => Proxies added via Admin Panel stay active until next cold start.
 const IS_VERCEL = !!(process.env.VERCEL || process.env.VERCEL_ENV);
+const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || '';
+const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN || '';
 
 function loadDb() {
   try {
-    if (!IS_VERCEL && fs.existsSync(DB_FILE)) {
+    if (fs.existsSync(DB_FILE)) {
       const saved = JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
       const merged = Object.assign({}, defaultDb, saved);
       if (!Array.isArray(merged.clients)) merged.clients = [];
@@ -50,16 +52,63 @@ function loadDb() {
 }
 
 function saveDb(data) {
-  // On Vercel: skip file write — data already lives in the `db` object in memory
-  if (IS_VERCEL) return;
+  // 1. Try local file write if filesystem is writable
   try {
     fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
   } catch (e) {
-    console.error('[DB] Write error:', e.message);
+    // Non-fatal on read-only serverless platforms like Vercel
+  }
+
+  // 2. Cloud DB Sync if Upstash / Vercel KV is configured in env variables
+  if (KV_URL && KV_TOKEN) {
+    try {
+      const parsed = new URL(KV_URL + '/set/scl_db');
+      const req = https.request({
+        hostname: parsed.hostname,
+        port: parsed.port || 443,
+        path: parsed.pathname,
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + KV_TOKEN,
+          'Content-Type': 'application/json'
+        }
+      });
+      req.on('error', () => {});
+      req.write(JSON.stringify(data));
+      req.end();
+    } catch (e) {}
   }
 }
 
 let db = loadDb();
+
+// If Cloud KV is set, hydrate DB asynchronously on boot
+if (KV_URL && KV_TOKEN) {
+  try {
+    const parsed = new URL(KV_URL + '/get/scl_db');
+    https.get({
+      hostname: parsed.hostname,
+      port: parsed.port || 443,
+      path: parsed.pathname,
+      headers: { 'Authorization': 'Bearer ' + KV_TOKEN }
+    }, (res) => {
+      let raw = '';
+      res.on('data', chunk => raw += chunk);
+      res.on('end', () => {
+        try {
+          const resp = JSON.parse(raw);
+          if (resp && resp.result) {
+            const cloudData = typeof resp.result === 'string' ? JSON.parse(resp.result) : resp.result;
+            if (cloudData && Array.isArray(cloudData.clients) && cloudData.clients.length > 0) {
+              db = Object.assign({}, defaultDb, cloudData);
+              console.log('[Cloud DB] Hydrated', db.clients.length, 'clients from Upstash/KV');
+            }
+          }
+        } catch (e) {}
+      });
+    }).on('error', () => {});
+  } catch (e) {}
+}
 
 // ── Kick Live Status Fetcher ─────────────────────────────────────
 function checkKickLive(slug) {
@@ -703,3 +752,5 @@ server.listen(PORT, () => {
   console.log(`👥 Clients Loaded: ${db.clients.length}`);
   console.log(`====================================================`);
 });
+
+module.exports = server;
