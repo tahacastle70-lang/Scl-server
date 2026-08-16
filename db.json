@@ -13,26 +13,7 @@
       "name": "Staff Member"
     }
   ],
-  "clients": [
-    {
-      "id": "c-1786326270542",
-      "name": "ishakick",
-      "email": "ishakick@gmail.com",
-      "lk": "SCL-6FT1-OR30-MFZN",
-      "exp": "2026-09-10",
-      "kc": "ishakick",
-      "sc": "ishakick",
-      "ce": true,
-      "ve": true,
-      "se": true,
-      "paused": false,
-      "stopped": false,
-      "created": "2026-08-10T01:44:30.542Z",
-      "watchChannels": [
-        "ishakick"
-      ]
-    }
-  ],
+  "clients": [],
   "proxies": [
     {
       "id": "px_1786814242913_jbk5oo",

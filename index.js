@@ -17,22 +17,7 @@ const defaultDb = {
     { username: 'admin', password: 'admin2025', role: 'SUPER_ADMIN', name: 'Super Admin (Owner)' },
     { username: 'staff1', password: 'staff2025', role: 'SUB_ADMIN', name: 'Staff Member' }
   ],
-  clients: [
-    {
-      id: 'c-1786326270542',
-      name: 'ishakick',
-      customerName: 'ishakick',
-      email: 'ishakick@gmail.com',
-      lk: 'SCL-6FT1-OR30-MFZN',
-      licenseKey: 'SCL-6FT1-OR30-MFZN',
-      exp: '2026-09-10',
-      kc: 'ishakick',
-      kickChannel: 'ishakick',
-      ce: true, ve: true, se: true, paused: false, stopped: false,
-      created: '2026-08-10T01:44:30.542Z',
-      watchChannels: ['ishakick']
-    }
-  ],
+  clients: [],
   proxies: [],
   aiConfigs: {},
   customMessages: {},
@@ -53,9 +38,9 @@ function loadDb() {
     if (!IS_VERCEL && fs.existsSync(DB_FILE)) {
       const saved = JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
       const merged = Object.assign({}, defaultDb, saved);
-      if (!Array.isArray(merged.clients) || merged.clients.length === 0) merged.clients = defaultDb.clients;
+      if (!Array.isArray(merged.clients)) merged.clients = [];
       if (!Array.isArray(merged.admins)  || merged.admins.length  === 0) merged.admins  = defaultDb.admins;
-      merged.clients = merged.clients.filter(c => c.id !== '1');
+      merged.clients = merged.clients.filter(c => c.id !== '1' && String(c.name || '').toLowerCase() !== 'ishakick' && String(c.kc || c.kickChannel || '').toLowerCase() !== 'ishakick');
       return merged;
     }
   } catch (e) {
